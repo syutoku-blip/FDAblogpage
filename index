@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LINE連携</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <style>
+    body{font-family:sans-serif;padding:24px;background:#f7f7f7}
+    .box{max-width:420px;margin:40px auto;background:#fff;border:1px solid #ddd;border-radius:12px;padding:24px;text-align:center;line-height:1.8;white-space:pre-wrap;word-break:break-word}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div id="status">開始します...</div>
+  </div>
+
+  <script>
+    const LIFF_ID = "2009147779-D056eEd8";
+    const GAS_API_URL = "https://script.google.com/macros/s/AKfycbzaKqR9vTb6L4WZSqlnqRNNfFc97_HXcEExl6ai3jOWnzumKBMAfB9iXxNWX8cE82nj/exec";
+
+    function setStatus(msg){
+      document.getElementById("status").innerText = msg;
+    }
+
+    async function main(){
+      try{
+        const params = new URLSearchParams(window.location.search);
+        const memberNo = params.get("member_no");
+
+        if (!memberNo) {
+          setStatus("エラー：会員番号がありません");
+          return;
+        }
+
+        setStatus("LIFFを初期化しています...");
+        await liff.init({ liffId: LIFF_ID });
+
+        setStatus("プロフィールを取得しています...");
+        const profile = await liff.getProfile();
+
+        setStatus("会員情報を連携しています...");
+
+        const res = await fetch(GAS_API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            member_no: memberNo,
+            userId: profile.userId,
+            displayName: profile.displayName
+          })
+        });
+
+        const text = await res.text();
+        if (text !== "ok") throw new Error(text);
+
+        setStatus("連携が完了しました。閉じて大丈夫です。");
+      }catch(e){
+        setStatus("エラー: " + e.message);
+      }
+    }
+
+    main();
+  </script>
+</body>
+</html>
