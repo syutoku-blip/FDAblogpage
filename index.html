@@ -24,52 +24,17 @@
       console.log(msg);
     }
 
-    function parseMemberNoFromText(text) {
-      if (!text) return "";
-
-      let value = text;
-
-      // 何回か decode してみる
-      for (let i = 0; i < 3; i++) {
-        try {
-          const decoded = decodeURIComponent(value);
-          if (decoded === value) break;
-          value = decoded;
-        } catch (e) {
-          break;
-        }
-      }
-
-      // ?member_no=1001 / member_no=1001 の両方に対応
-      value = value.replace(/^[?#]/, "");
-      const params = new URLSearchParams(value);
-      return params.get("member_no") || "";
-    }
-
     function getMemberNo() {
       const url = new URL(window.location.href);
 
-      // 1) 普通の ?member_no=1001
+      // 通常クエリ
       let memberNo = url.searchParams.get("member_no");
       if (memberNo) return memberNo;
 
-      // 2) ?liff.state=%3Fmember_no%3D1001
-      let liffState = url.searchParams.get("liff.state");
-      memberNo = parseMemberNoFromText(liffState);
-      if (memberNo) return memberNo;
-
-      // 3) hash側に入るケース
-      const hash = window.location.hash ? window.location.hash.replace(/^#/, "") : "";
-      if (hash) {
-        const hashParams = new URLSearchParams(hash);
-
-        memberNo = hashParams.get("member_no");
-        if (memberNo) return memberNo;
-
-        liffState = hashParams.get("liff.state");
-        memberNo = parseMemberNoFromText(liffState);
-        if (memberNo) return memberNo;
-      }
+      // pathの最後も見る
+      const parts = url.pathname.split("/").filter(Boolean);
+      const last = parts[parts.length - 1];
+      if (/^[A-Za-z0-9_-]+$/.test(last) && last !== "FDA") return last;
 
       return "";
     }
@@ -77,16 +42,11 @@
     async function main(){
       try{
         setStatus("LIFFを初期化しています...");
-        await liff.init({
-          liffId: LIFF_ID,
-          withLoginOnExternalBrowser: true
-        });
+        await liff.init({ liffId: LIFF_ID });
 
-        setStatus("会員番号を確認しています...");
         const memberNo = getMemberNo();
-
         if (!memberNo) {
-          setStatus("エラー：会員番号がありません\n\n現在のURL:\n" + window.location.href);
+          setStatus("エラー：会員番号がありません\n\nURL:\n" + window.location.href);
           return;
         }
 
@@ -94,7 +54,6 @@
         const profile = await liff.getProfile();
 
         setStatus("会員情報を連携しています...");
-
         const res = await fetch(GAS_API_URL, {
           method: "POST",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
