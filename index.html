@@ -7,16 +7,13 @@
   <style>
     :root {
       --bg: #f4f7fb;
-      --card: rgba(255, 255, 255, 0.88);
+      --card: rgba(255, 255, 255, 0.92);
       --white: #ffffff;
       --text: #1f2937;
       --muted: #5b6473;
       --primary: #1d4ed8;
       --primary-dark: #163ea8;
       --accent: #0ea5e9;
-      --soft-blue: #eaf4ff;
-      --soft-yellow: #fff7e6;
-      --soft-green: #edfdf5;
       --line: #dbe4f0;
       --shadow: 0 12px 30px rgba(16, 24, 40, 0.08);
       --radius-xl: 28px;
@@ -49,18 +46,13 @@
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
     .container {
-      width: min(1120px, calc(100% - 32px));
+      width: min(980px, calc(100% - 32px));
       margin: 0 auto;
     }
 
     .hero-wrap {
-      padding: 42px 0 26px;
+      padding: 42px 0 22px;
     }
 
     .hero {
@@ -70,7 +62,7 @@
       color: #fff;
       border-radius: 32px;
       box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18);
-      padding: 54px 42px;
+      padding: 56px 42px;
       isolation: isolate;
     }
 
@@ -101,24 +93,9 @@
       filter: blur(8px);
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.14);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      margin-bottom: 18px;
-      backdrop-filter: blur(10px);
-    }
-
     .hero h1 {
       margin: 0;
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(2rem, 4vw, 3.1rem);
       line-height: 1.3;
       letter-spacing: -0.02em;
     }
@@ -127,132 +104,59 @@
       max-width: 760px;
       margin: 18px 0 0;
       font-size: 1.04rem;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 0.8fr;
-      gap: 24px;
-      align-items: end;
-    }
-
-    .hero-aside {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 24px;
-      padding: 22px 20px;
-      backdrop-filter: blur(12px);
-    }
-
-    .hero-aside h3 {
-      margin: 0 0 12px;
-      font-size: 1rem;
-    }
-
-    .hero-aside ul {
-      margin: 0;
-      padding-left: 18px;
       color: rgba(255, 255, 255, 0.92);
     }
 
-    .hero-aside li {
-      margin-bottom: 8px;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 300px;
-      gap: 28px;
-      padding: 22px 0 80px;
-    }
-
-    .content {
-      min-width: 0;
-    }
-
-    .sidebar {
-      position: sticky;
-      top: 20px;
-      align-self: start;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .glass-card,
-    .article-card,
-    .side-card {
+    .toc-top {
+      margin: 0 0 26px;
       background: var(--card);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 24px;
       box-shadow: var(--shadow);
+      padding: 26px;
+      backdrop-filter: blur(10px);
     }
 
-    .article-card {
-      border-radius: var(--radius-xl);
-      padding: 34px;
-    }
-
-    .side-card {
-      border-radius: 22px;
-      padding: 22px;
-    }
-
-    .side-card h3 {
-      margin: 0 0 12px;
-      font-size: 1rem;
+    .toc-top h2 {
+      margin: 0 0 14px;
+      font-size: 1.25rem;
       color: #0f172a;
     }
 
-    .toc ul,
-    .mini-check ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
 
-    .toc li + li,
-    .mini-check li + li {
-      margin-top: 10px;
-    }
-
-    .toc a {
+    .toc-grid a {
       display: block;
-      padding: 10px 12px;
-      border-radius: 12px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
+      border: 1px solid #dce9fb;
       color: var(--text);
-      background: #f8fbff;
-      border: 1px solid #e5edf8;
+      font-weight: 600;
       transition: 0.25s ease;
     }
 
-    .toc a:hover {
+    .toc-grid a:hover {
       transform: translateY(-1px);
       background: #edf5ff;
       border-color: #cfe0ff;
     }
 
-    .mini-check li {
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      color: var(--muted);
-      font-size: 0.96rem;
+    .content {
+      padding-bottom: 80px;
     }
 
-    .mini-check li::before {
-      content: "✓";
-      flex: 0 0 auto;
-      width: 24px;
-      height: 24px;
-      display: inline-grid;
-      place-items: center;
-      border-radius: 999px;
-      background: #e8f1ff;
-      color: var(--primary);
-      font-weight: 800;
-      margin-top: 2px;
+    .article-card {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-xl);
+      padding: 34px;
+      backdrop-filter: blur(10px);
     }
 
     .summary-panel {
@@ -282,7 +186,7 @@
     }
 
     .pill {
-      background: rgba(255, 255, 255, 0.86);
+      background: rgba(255, 255, 255, 0.9);
       border: 1px solid #d8e5fb;
       border-radius: 18px;
       padding: 16px;
@@ -616,23 +520,11 @@
       color: #6b7280;
     }
 
-    @media (max-width: 1024px) {
-      .layout {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        position: static;
-        order: -1;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
+    @media (max-width: 900px) {
       .pill-grid,
       .flow,
-      .cards-grid {
+      .cards-grid,
+      .toc-grid {
         grid-template-columns: 1fr;
       }
 
@@ -658,7 +550,8 @@
 
       .summary-panel,
       .reference-box,
-      .closing-box {
+      .closing-box,
+      .toc-top {
         padding: 22px;
       }
 
@@ -678,325 +571,297 @@
   <div class="container">
     <div class="hero-wrap">
       <header class="hero">
-        <div class="hero-grid">
-          <div>
-            <div class="eyebrow">食品輸出の実務整理</div>
-            <h1>アメリカに食品を輸出する前に<br>最初に確認すべきこと</h1>
-            <p class="lead">
-              いきなり細かな制度を追いかけるより先に、まず整理したいのは
-              「どのルールの対象か」「誰が責任を持つか」「どんな信頼材料が必要か」です。
-              この3点が見えるだけで、輸出準備はぐっと進めやすくなります。
-            </p>
-          </div>
-
-          <aside class="hero-aside">
-            <h3>この記事で整理できること</h3>
-            <ul>
-              <li>どの規制機関を先に確認すべきか</li>
-              <li>輸入時の責任者をどう整理するか</li>
-              <li>認証や証明をどこまで準備すべきか</li>
-            </ul>
-          </aside>
-        </div>
+        <h1>アメリカに食品を輸出する前に<br>最初に確認すべきこと</h1>
+        <p class="lead">
+          いきなり細かな制度を追いかけるより先に、まず整理したいのは
+          「どのルールの対象か」「誰が責任を持つか」「どんな信頼材料が必要か」です。
+          この3点が見えるだけで、輸出準備はぐっと進めやすくなります。
+        </p>
       </header>
     </div>
 
-    <div class="layout">
-      <main class="content">
-        <article class="article-card">
-          <section class="summary-panel">
-            <h2>まず押さえたい全体像</h2>
-            <p>
-              複雑な制度を深掘りする前に、次の3点を順番に確認すると、
-              その後に調べるべきことが整理しやすくなります。
-            </p>
+    <main class="content">
+      <nav class="toc-top">
+        <h2>目次</h2>
+        <div class="toc-grid">
+          <a href="#section1">1. どの規制機関の対象かを確認する</a>
+          <a href="#section2">2. 誰が輸入時の責任を持つのかを整理する</a>
+          <a href="#section3">3. 安全性や品質を示す材料を整理する</a>
+          <a href="#section4">4. 判断を支える基本情報も先にまとめておく</a>
+        </div>
+      </nav>
 
-            <div class="pill-grid">
-              <div class="pill">
-                <div class="num">1</div>
+      <article class="article-card">
+        <section class="summary-panel">
+          <h2>まず押さえたい全体像</h2>
+          <p>
+            複雑な制度を深掘りする前に、次の3点を順番に確認すると、
+            その後に調べるべきことが整理しやすくなります。
+          </p>
+
+          <div class="pill-grid">
+            <div class="pill">
+              <div class="num">1</div>
+              <strong>規制機関の確認</strong>
+              <span>どのルールの対象になるのかを整理する</span>
+            </div>
+            <div class="pill">
+              <div class="num">2</div>
+              <strong>輸入責任者の確認</strong>
+              <span>誰が輸入時の責任を持つのかを明確にする</span>
+            </div>
+            <div class="pill">
+              <div class="num">3</div>
+              <strong>安全性証明の整理</strong>
+              <span>信頼を担保する認証や証明の要否を確認する</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="section1">
+          <div class="section-header">
+            <div class="section-badge">1</div>
+            <h2>どの規制機関の対象かを確認する</h2>
+          </div>
+
+          <p>
+            アメリカ向け食品輸出では、商品が何に分類されるかによって、
+            最初に確認すべき機関が変わります。食品であっても一律ではありません。
+            まずは商品分類を見極めることが、調査の出発点になります。
+          </p>
+
+          <div class="soft-box blue">
+            <h3>主な確認先のイメージ</h3>
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>機関</th>
+                  <th>主な対象</th>
+                  <th>実務上の見方</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>FDA</td>
+                  <td>一般的な加工食品、飲料、菓子、健康食品など</td>
+                  <td>多くの食品はここから確認を始めることになります。</td>
+                </tr>
+                <tr>
+                  <td>TTB</td>
+                  <td>ワイン、ビール、蒸留酒などのアルコール飲料</td>
+                  <td>アルコール類は食品とは別の観点で確認が必要です。</td>
+                </tr>
+                <tr>
+                  <td>USDA</td>
+                  <td>肉、家禽、卵製品など</td>
+                  <td>畜産由来原料がある場合は特に注意が必要です。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="soft-box yellow">
+            <h3>先にチェックしたい項目</h3>
+            <ul class="checklist">
+              <li>アルコールが含まれていないか</li>
+              <li>肉、家禽、卵などの畜産原料が含まれていないか</li>
+              <li>複数の機関が関係する可能性がないか</li>
+            </ul>
+          </div>
+
+          <div class="soft-box green">
+            <h3>実務のポイント</h3>
+            <p>
+              「食品だからまずこれ」と決め打ちすると、あとで確認範囲がずれることがあります。
+              最初は制度の細部ではなく、<strong>どのルールの土俵に立つ商品なのか</strong>を整理することが大切です。
+            </p>
+          </div>
+        </section>
+
+        <section class="section" id="section2">
+          <div class="section-header">
+            <div class="section-badge">2</div>
+            <h2>誰が輸入時の責任を持つのかを整理する</h2>
+          </div>
+
+          <p>
+            販売先が決まっていても、その会社がそのまま輸入責任者になるとは限りません。
+            実務では、販売先、輸入者、通関対応者が分かれていることもあります。
+            そのため、商品の確認と同じくらい、責任構造の整理が重要です。
+          </p>
+
+          <div class="cards-grid">
+            <div class="mini-card">
+              <div class="tag">確認ポイント</div>
+              <h3>Importer of Recordは誰か</h3>
+              <p>
+                アメリカ側で輸入の主体となるのが誰かを確認します。
+                販売先と一致しないケースもあります。
+              </p>
+            </div>
+
+            <div class="mini-card">
+              <div class="tag">確認ポイント</div>
+              <h3>書類対応の担当は誰か</h3>
+              <p>
+                必要書類の提出や実務調整を、どの立場の誰が担うのかを明確にしておきます。
+              </p>
+            </div>
+
+            <div class="mini-card">
+              <div class="tag">確認ポイント</div>
+              <h3>責任範囲は契約で明確か</h3>
+              <p>
+                後から認識差が出ないように、責任分担は文書ベースで整理しておくのが安全です。
+              </p>
+            </div>
+
+            <div class="mini-card">
+              <div class="tag">関連事項</div>
+              <h3>FSVPなどの役割分担</h3>
+              <p>
+                実際の制度対応に進む前に、まず「誰がその役割を担うか」を整理すると流れが見えやすくなります。
+              </p>
+            </div>
+          </div>
+
+          <div class="soft-box yellow">
+            <h3>よくある詰まり方</h3>
+            <ul class="bullet-list">
+              <li>販売先はいるが、輸入時の責任者が未確定</li>
+              <li>誰が何を対応するかが口頭ベースでしか決まっていない</li>
+              <li>準備を進めた後に、対応範囲の認識差が見つかる</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section" id="section3">
+          <div class="section-header">
+            <div class="section-badge">3</div>
+            <h2>安全性や品質を示す材料を整理する</h2>
+          </div>
+
+          <p>
+            実務では、法令上の必須事項だけでなく、
+            「この商品はどのように安全性や品質を担保しているのか」を求められる場面が多くあります。
+            これは制度対応というより、商流を成立させるための信頼設計です。
+          </p>
+
+          <div class="cards-grid">
+            <div class="mini-card">
+              <div class="tag">衛生管理</div>
+              <h3>HACCP等の運用状況</h3>
+              <p>製造現場の衛生管理体制を説明できる状態にしておきます。</p>
+            </div>
+
+            <div class="mini-card">
+              <div class="tag">認証</div>
+              <h3>ISO22000 / FSSC22000</h3>
+              <p>取得済みの認証があれば、取引先への説明材料として有効です。</p>
+            </div>
+
+            <div class="mini-card">
+              <div class="tag">分析</div>
+              <h3>成分分析・検査証明</h3>
+              <p>必要に応じて提出できる分析証明書があるかを確認します。</p>
+            </div>
+
+            <div class="mini-card">
+              <div class="tag">追跡性</div>
+              <h3>トレーサビリティ</h3>
+              <p>原料やロットの追跡可能性を説明できる状態にしておくと安心です。</p>
+            </div>
+          </div>
+
+          <div class="soft-box blue">
+            <h3>考え方の軸</h3>
+            <p>
+              認証や証明は、単に「必須か任意か」で分けるより、
+              <strong>取引先が安心して扱える状態をつくるために何が必要か</strong>という観点で整理すると判断しやすくなります。
+            </p>
+          </div>
+        </section>
+
+        <section class="section" id="section4">
+          <div class="section-header">
+            <div class="section-badge">4</div>
+            <h2>判断を支える基本情報も先にまとめておく</h2>
+          </div>
+
+          <p>
+            上の3点を確認するためにも、製品に関する基本情報は早めに整理しておくのがおすすめです。
+            完璧な書類を最初から作る必要はありませんが、少なくとも説明できる状態にしておくと実務が進めやすくなります。
+          </p>
+
+          <div class="soft-box blue">
+            <h3>最低限まとめておきたい情報</h3>
+            <ul class="checklist">
+              <li>原材料一覧</li>
+              <li>添加物の内容</li>
+              <li>製造工程の概要</li>
+              <li>アレルゲン情報</li>
+              <li>保存方法</li>
+              <li>賞味期限または消費期限</li>
+            </ul>
+          </div>
+
+          <div class="flow-box">
+            <h3 style="margin-top:0; margin-bottom:16px;">整理の順番はこの流れがわかりやすい</h3>
+            <div class="flow">
+              <div class="flow-step">
+                <div class="step-no">STEP 1</div>
                 <strong>規制機関の確認</strong>
-                <span>どのルールの対象になるのかを整理する</span>
+                <span>どのルールを調べるべきかを明確にする</span>
               </div>
-              <div class="pill">
-                <div class="num">2</div>
-                <strong>輸入責任者の確認</strong>
-                <span>誰が輸入時の責任を持つのかを明確にする</span>
+              <div class="flow-step">
+                <div class="step-no">STEP 2</div>
+                <strong>責任構造の整理</strong>
+                <span>輸入時の主体と役割分担を固める</span>
               </div>
-              <div class="pill">
-                <div class="num">3</div>
-                <strong>安全性証明の整理</strong>
-                <span>信頼を担保する認証や証明の要否を確認する</span>
+              <div class="flow-step">
+                <div class="step-no">STEP 3</div>
+                <strong>証明材料の確認</strong>
+                <span>認証や分析証明の要否を整理する</span>
               </div>
-            </div>
-          </section>
-
-          <section class="section" id="section1">
-            <div class="section-header">
-              <div class="section-badge">1</div>
-              <h2>どの規制機関の対象かを確認する</h2>
-            </div>
-
-            <p>
-              アメリカ向け食品輸出では、商品が何に分類されるかによって、
-              最初に確認すべき機関が変わります。食品であっても一律ではありません。
-              まずは商品分類を見極めることが、調査の出発点になります。
-            </p>
-
-            <div class="soft-box blue">
-              <h3>主な確認先のイメージ</h3>
-              <table class="compare-table">
-                <thead>
-                  <tr>
-                    <th>機関</th>
-                    <th>主な対象</th>
-                    <th>実務上の見方</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>FDA</td>
-                    <td>一般的な加工食品、飲料、菓子、健康食品など</td>
-                    <td>多くの食品はここから確認を始めることになります。</td>
-                  </tr>
-                  <tr>
-                    <td>TTB</td>
-                    <td>ワイン、ビール、蒸留酒などのアルコール飲料</td>
-                    <td>アルコール類は食品とは別の観点で確認が必要です。</td>
-                  </tr>
-                  <tr>
-                    <td>USDA</td>
-                    <td>肉、家禽、卵製品など</td>
-                    <td>畜産由来原料がある場合は特に注意が必要です。</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="soft-box yellow">
-              <h3>先にチェックしたい項目</h3>
-              <ul class="checklist">
-                <li>アルコールが含まれていないか</li>
-                <li>肉、家禽、卵などの畜産原料が含まれていないか</li>
-                <li>複数の機関が関係する可能性がないか</li>
-              </ul>
-            </div>
-
-            <div class="soft-box green">
-              <h3>実務のポイント</h3>
-              <p>
-                「食品だからまずこれ」と決め打ちすると、あとで確認範囲がずれることがあります。
-                最初は制度の細部ではなく、<strong>どのルールの土俵に立つ商品なのか</strong>を整理することが大切です。
-              </p>
-            </div>
-          </section>
-
-          <section class="section" id="section2">
-            <div class="section-header">
-              <div class="section-badge">2</div>
-              <h2>誰が輸入時の責任を持つのかを整理する</h2>
-            </div>
-
-            <p>
-              販売先が決まっていても、その会社がそのまま輸入責任者になるとは限りません。
-              実務では、販売先、輸入者、通関対応者が分かれていることもあります。
-              そのため、商品の確認と同じくらい、責任構造の整理が重要です。
-            </p>
-
-            <div class="cards-grid">
-              <div class="mini-card">
-                <div class="tag">確認ポイント</div>
-                <h3>Importer of Recordは誰か</h3>
-                <p>
-                  アメリカ側で輸入の主体となるのが誰かを確認します。
-                  販売先と一致しないケースもあります。
-                </p>
-              </div>
-
-              <div class="mini-card">
-                <div class="tag">確認ポイント</div>
-                <h3>書類対応の担当は誰か</h3>
-                <p>
-                  必要書類の提出や実務調整を、どの立場の誰が担うのかを明確にしておきます。
-                </p>
-              </div>
-
-              <div class="mini-card">
-                <div class="tag">確認ポイント</div>
-                <h3>責任範囲は契約で明確か</h3>
-                <p>
-                  後から認識差が出ないように、責任分担は文書ベースで整理しておくのが安全です。
-                </p>
-              </div>
-
-              <div class="mini-card">
-                <div class="tag">関連事項</div>
-                <h3>FSVPなどの役割分担</h3>
-                <p>
-                  実際の制度対応に進む前に、まず「誰がその役割を担うか」を整理すると流れが見えやすくなります。
-                </p>
+              <div class="flow-step">
+                <div class="step-no">STEP 4</div>
+                <strong>製品情報の整備</strong>
+                <span>今後の相談や実務の土台をつくる</span>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div class="soft-box yellow">
-              <h3>よくある詰まり方</h3>
-              <ul class="bullet-list">
-                <li>販売先はいるが、輸入時の責任者が未確定</li>
-                <li>誰が何を対応するかが口頭ベースでしか決まっていない</li>
-                <li>準備を進めた後に、対応範囲の認識差が見つかる</li>
-              </ul>
-            </div>
-          </section>
-
-          <section class="section" id="section3">
-            <div class="section-header">
-              <div class="section-badge">3</div>
-              <h2>安全性や品質を示す材料を整理する</h2>
-            </div>
-
-            <p>
-              実務では、法令上の必須事項だけでなく、
-              「この商品はどのように安全性や品質を担保しているのか」を求められる場面が多くあります。
-              これは制度対応というより、商流を成立させるための信頼設計です。
-            </p>
-
-            <div class="cards-grid">
-              <div class="mini-card">
-                <div class="tag">衛生管理</div>
-                <h3>HACCP等の運用状況</h3>
-                <p>製造現場の衛生管理体制を説明できる状態にしておきます。</p>
-              </div>
-
-              <div class="mini-card">
-                <div class="tag">認証</div>
-                <h3>ISO22000 / FSSC22000</h3>
-                <p>取得済みの認証があれば、取引先への説明材料として有効です。</p>
-              </div>
-
-              <div class="mini-card">
-                <div class="tag">分析</div>
-                <h3>成分分析・検査証明</h3>
-                <p>必要に応じて提出できる分析証明書があるかを確認します。</p>
-              </div>
-
-              <div class="mini-card">
-                <div class="tag">追跡性</div>
-                <h3>トレーサビリティ</h3>
-                <p>原料やロットの追跡可能性を説明できる状態にしておくと安心です。</p>
-              </div>
-            </div>
-
-            <div class="soft-box blue">
-              <h3>考え方の軸</h3>
-              <p>
-                認証や証明は、単に「必須か任意か」で分けるより、
-                <strong>取引先が安心して扱える状態をつくるために何が必要か</strong>という観点で整理すると判断しやすくなります。
-              </p>
-            </div>
-          </section>
-
-          <section class="section" id="section4">
-            <div class="section-header">
-              <div class="section-badge">4</div>
-              <h2>判断を支える基本情報も先にまとめておく</h2>
-            </div>
-
-            <p>
-              上の3点を確認するためにも、製品に関する基本情報は早めに整理しておくのがおすすめです。
-              完璧な書類を最初から作る必要はありませんが、少なくとも説明できる状態にしておくと実務が進めやすくなります。
-            </p>
-
-            <div class="soft-box blue">
-              <h3>最低限まとめておきたい情報</h3>
-              <ul class="checklist">
-                <li>原材料一覧</li>
-                <li>添加物の内容</li>
-                <li>製造工程の概要</li>
-                <li>アレルゲン情報</li>
-                <li>保存方法</li>
-                <li>賞味期限または消費期限</li>
-              </ul>
-            </div>
-
-            <div class="flow-box">
-              <h3 style="margin-top:0; margin-bottom:16px;">整理の順番はこの流れがわかりやすい</h3>
-              <div class="flow">
-                <div class="flow-step">
-                  <div class="step-no">STEP 1</div>
-                  <strong>規制機関の確認</strong>
-                  <span>どのルールを調べるべきかを明確にする</span>
-                </div>
-                <div class="flow-step">
-                  <div class="step-no">STEP 2</div>
-                  <strong>責任構造の整理</strong>
-                  <span>輸入時の主体と役割分担を固める</span>
-                </div>
-                <div class="flow-step">
-                  <div class="step-no">STEP 3</div>
-                  <strong>証明材料の確認</strong>
-                  <span>認証や分析証明の要否を整理する</span>
-                </div>
-                <div class="flow-step">
-                  <div class="step-no">STEP 4</div>
-                  <strong>製品情報の整備</strong>
-                  <span>今後の相談や実務の土台をつくる</span>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section class="reference-box">
-            <h2>参考情報・参照先</h2>
-            <ul>
-              <li>U.S. Food and Drug Administration (FDA) Food: <code>https://www.fda.gov/food</code></li>
-              <li>Alcohol and Tobacco Tax and Trade Bureau (TTB): <code>https://www.ttb.gov</code></li>
-              <li>United States Department of Agriculture (USDA): <code>https://www.usda.gov</code></li>
-              <li>JETRO 米国向け食品輸出関連情報: <code>https://www.jetro.go.jp</code></li>
-            </ul>
-            <p class="small-note">
-              ※ 実際の輸出可否や必要対応は、商品分類、原材料、商流によって変わるため、個別案件では最新の公的情報や専門家確認を行ってください。
-            </p>
-          </section>
-
-          <section class="closing-box">
-            <h2>まとめ</h2>
-            <p>
-              アメリカへの食品輸出で最初に重要なのは、制度を細かく読むことより、
-              <strong>何をどの順番で整理するか</strong>を見える化することです。
-            </p>
-            <ul>
-              <li>どの規制機関の対象になるのか</li>
-              <li>誰が輸入時の責任を持つのか</li>
-              <li>安全性や品質を示す材料は何か</li>
-            </ul>
-            <p>
-              この3点が整理できると、その後の調査も、専門家への相談も、ぐっと進めやすくなります。
-            </p>
-          </section>
-        </article>
-      </main>
-
-      <aside class="sidebar">
-        <div class="side-card toc">
-          <h3>目次</h3>
+        <section class="reference-box">
+          <h2>参考情報・参照先</h2>
           <ul>
-            <li><a href="#section1">1. 規制機関の確認</a></li>
-            <li><a href="#section2">2. 輸入責任者の整理</a></li>
-            <li><a href="#section3">3. 安全性証明の整理</a></li>
-            <li><a href="#section4">4. 基本情報の整理</a></li>
+            <li>U.S. Food and Drug Administration (FDA) Food: <code>https://www.fda.gov/food</code></li>
+            <li>Alcohol and Tobacco Tax and Trade Bureau (TTB): <code>https://www.ttb.gov</code></li>
+            <li>United States Department of Agriculture (USDA): <code>https://www.usda.gov</code></li>
+            <li>JETRO 米国向け食品輸出関連情報: <code>https://www.jetro.go.jp</code></li>
           </ul>
-        </div>
+          <p class="small-note">
+            ※ 実際の輸出可否や必要対応は、商品分類、原材料、商流によって変わるため、個別案件では最新の公的情報や専門家確認を行ってください。
+          </p>
+        </section>
 
-        <div class="side-card mini-check">
-          <h3>先に見るチェックポイント</h3>
+        <section class="closing-box">
+          <h2>まとめ</h2>
+          <p>
+            アメリカへの食品輸出で最初に重要なのは、制度を細かく読むことより、
+            <strong>何をどの順番で整理するか</strong>を見える化することです。
+          </p>
           <ul>
-            <li>商品分類が明確か</li>
-            <li>責任者が決まっているか</li>
-            <li>認証や証明の有無を把握しているか</li>
-            <li>基本情報を説明できる状態か</li>
+            <li>どの規制機関の対象になるのか</li>
+            <li>誰が輸入時の責任を持つのか</li>
+            <li>安全性や品質を示す材料は何か</li>
           </ul>
-        </div>
-      </aside>
-    </div>
+          <p>
+            この3点が整理できると、その後の調査も、専門家への相談も、ぐっと進めやすくなります。
+          </p>
+        </section>
+      </article>
+    </main>
   </div>
 </body>
 </html>
